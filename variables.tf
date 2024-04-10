@@ -59,14 +59,22 @@ variable "database_name" {
   default     = ""
 }
 
-variable "sql_database_edition" {
-  description = "The edition of the database to be created"
-  default     = "Standard"
+variable "collation" {
+  description = "The collation information  of the database to be created"
+  default     = "SQL_Latin1_General_CP1_CI_AS"
+}
+variable "license_type" {
+  description = "The default license type for SQL databse to be created"
+  default     = "LicenseIncluded"
+}
+variable "size" {
+  description = "The database size for databse to be created"
+  default     = 5
 }
 
-variable "sqldb_service_objective_name" {
+variable "sku" {
   description = " The service objective name for the database"
-  default     = "S1"
+  default     = "S0"
 }
 
 variable "log_retention_days" {
@@ -105,7 +113,10 @@ variable "identity" {
   description = "If you want your SQL Server to have an managed identity. Defaults to false."
   default     = false
 }
-
+variable "azuread_administrator" {
+  description = "If you want your SQL Server to have azuread as adminitstrator. Defaults to false."
+  default     = false
+}
 variable "enable_firewall_rules" {
   description = "Manage an Azure SQL Firewall Rule"
   default     = false
@@ -120,6 +131,11 @@ variable "secondary_sql_server_location" {
   description = "Specifies the supported Azure location to create secondary sql server resource"
   default     = "northeurope"
 }
+variable "user_object_id" {
+  description = " Azure AD admin or databse user object  ID"
+  default     = ""
+}
+
 
 variable "enable_private_endpoint" {
   description = "Manages a Private Endpoint to SQL database"
