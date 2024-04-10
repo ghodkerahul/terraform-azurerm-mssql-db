@@ -212,3 +212,8 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "sqldb_failover_group_name" {
+  description = "SQL DB failover group name"
+  default     = "sqldb-failover-group"
+}

@@ -294,7 +294,7 @@ resource "azurerm_mssql_firewall_rule" "fw02" {
 
 resource "azurerm_mssql_failover_group" "fog" {
   count     = var.enable_failover_group ? 1 : 0
-  name      = "sqldb-failover-group"
+  name      = var.sqldb_failover_group_name ## example set as per need
   server_id = azurerm_mssql_server.primary.id
   databases = [
     azurerm_mssql_database.db.id
