@@ -1,6 +1,7 @@
 output "resource_group_name" {
   description = "The name of the resource group in which resources are created"
   value       = module.mssql-server.resource_group_name
+
 }
 
 output "resource_group_location" {
