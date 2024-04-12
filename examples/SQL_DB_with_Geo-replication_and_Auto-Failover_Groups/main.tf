@@ -22,10 +22,11 @@ module "mssql-server" {
 
   # SQL Server and Database details
   # The valid service objective name for the database include S0, S1, S2, S3, P1, P2, P4, P6, P11 
-  sqlserver_name               = "sqldbserver01"
-  database_name                = "demomssqldb"
-  sql_database_edition         = "Standard"
-  sqldb_service_objective_name = "S1"
+  sqlserver_name = "testdbs-sqldbserver01"
+  database_name  = "demomssqldb"
+  collation      = "SQL_Latin1_General_CP1_CI_AS"
+  sku            = "S0"
+  max_size_gb    = 5
 
   # SQL server extended auditing policy defaults to `true`. 
   # To turn off set enable_sql_server_extended_auditing_policy to `false`  
@@ -43,6 +44,7 @@ module "mssql-server" {
   # AD administrator for an Azure SQL server
   # Allows you to set a user or group as the AD administrator for an Azure SQL server
   ad_admin_login_name = "firstname.lastname@example.com"
+  user_object_id = 123456789abc1234
 
   # (Optional) To enable Azure Monitoring for Azure SQL database including audit logs
   # Log Analytic workspace resource id required

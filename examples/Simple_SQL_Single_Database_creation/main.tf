@@ -12,6 +12,7 @@ module "mssql-server" {
   source  = "kumarvna/mssql-db/azurerm"
   version = "1.3.0"
 
+
   # By default, this module will create a resource group
   # proivde a name to use an existing resource group and set the argument 
   # to `create_resource_group = false` if you want to existing resoruce group. 
@@ -21,11 +22,14 @@ module "mssql-server" {
   location              = "westeurope"
 
   # SQL Server and Database details
-  # The valid service objective name for the database include S0, S1, S2, S3, P1, P2, P4, P6, P11 
-  sqlserver_name               = "te-sqldbserver01"
-  database_name                = "demomssqldb"
-  sql_database_edition         = "Standard"
-  sqldb_service_objective_name = "S1"
+  # The valid service objective name for the database include GP_S_Gen5_2,HS_Gen4_1,BC_Gen5_2, ElasticPool, Basic,S0, P2 ,DW100c, DS100 
+  sqlserver_name = "testdbs-sqldbserver01"
+  database_name  = "demomssqldb"
+  collation      = "SQL_Latin1_General_CP1_CI_AS"
+  sku            = "S0"
+  max_size_gb    = 5
+
+
 
   # SQL server extended auditing policy defaults to `true`. 
   # To turn off set enable_sql_server_extended_auditing_policy to `false`  
@@ -43,6 +47,7 @@ module "mssql-server" {
   # AD administrator for an Azure SQL server
   # Allows you to set a user or group as the AD administrator for an Azure SQL server
   ad_admin_login_name = "firstname.lastname@example.com"
+  user_object_id      = "123456789abc1234"
 
   # (Optional) To enable Azure Monitoring for Azure SQL database including audit logs
   # Log Analytic workspace resource id required
@@ -72,5 +77,6 @@ module "mssql-server" {
     Owner        = "user@example.com"
     BusinessUnit = "CORP"
     ServiceClass = "Gold"
+
   }
 }
