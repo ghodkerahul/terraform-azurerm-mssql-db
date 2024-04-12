@@ -35,7 +35,7 @@ variable "enable_database_extended_auditing_policy" {
 }
 
 variable "enable_threat_detection_policy" {
-  description = ""
+  description = "To enable threat detection policy"
   default     = false
 }
 
